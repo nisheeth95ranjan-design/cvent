@@ -287,7 +287,7 @@ body.hc .dash{border-width:3px}
 .mv-l1{border-color:#C79A5E;background:#FFFAF2}.mv-l1 .mv-h::before{border-radius:5px;background:#FFC98A;border:3px solid #B98A4B}
 .qc{width:100%;max-width:520px;margin-top:12px;padding:12px 14px;background:#fff;border:2px solid var(--line2);border-radius:var(--r2)}
 .qc label{display:block;font-weight:700;margin-bottom:4px}.qc input[type=range]{width:100%}.qc .row{margin-top:8px}
-@media (min-width:861px){.wt.sticky>div:last-child{position:sticky;top:84px;align-self:start}.wt.sticky #wStage svg{max-height:46vh}}
+@media (min-width:861px){.stick{position:sticky;top:138px;z-index:5;background:var(--bg,#F7F2E8);padding-bottom:8px}.stick .stage svg{max-height:50vh}.lab>div:last-child{align-self:start}.wt.sticky>div:last-child{position:sticky;top:138px;align-self:start}.wt.sticky #wStage svg{max-height:46vh}}
 .legend i.sw-hatch,.sw-hatch{background:repeating-linear-gradient(45deg,#F4F1EA 0 3px,#9AA3AD 3px 6px)}
 .act .toks{display:flex;flex-wrap:wrap;gap:6px}.act .toks i{width:20px;height:20px;border-radius:50%;border:3px solid #2457A6;background:#fff}.act .toks i.f{background:#2457A6}
 #hf{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;z-index:60;width:min(920px,calc(100% - 24px));background:#1F1B16;color:#fff;border-radius:22px;padding:12px 16px;box-shadow:0 12px 34px rgba(0,0,0,.4);display:grid;gap:8px}
@@ -415,9 +415,9 @@ input[type=text]{width:100%;font:inherit;padding:10px 12px;border:2px solid var(
       <div class="navrow"><button id="dBack">← Back</button><button id="dNext" class="primary">Next →</button></div>
     </div>
     <div>
-      <div class="tabs" role="tablist"><button id="t-map" role="tab" aria-selected="true">City map</button><button id="t-dial" role="tab" aria-selected="false">Arjun's Way Dial</button></div>
+      <div class="stick"><div class="tabs" role="tablist"><button id="t-map" role="tab" aria-selected="true">City map</button><button id="t-dial" role="tab" aria-selected="false">Arjun's Way Dial</button></div>
       <div class="stage" id="dStage"></div>
-      <div class="legend" id="dLegend"></div>
+      <div class="legend" id="dLegend"></div></div>
       <div id="sx-day" style="display:none;margin-top:14px"></div>
       <div id="verdict"></div>
       <h3 class="sec">What moves tonight, and what does not</h3>
@@ -432,7 +432,7 @@ input[type=text]{width:100%;font:inherit;padding:10px 12px;border:2px solid var(
   <h2>User journeys</h2>
   <p class="note">Three people, one city. Arjun, the rider, is shown in the most detail.</p>
   <div class="row" id="jr-chips"><button class="chip" data-w="arjun" aria-pressed="true">Arjun, rider (detailed)</button><button class="chip" data-w="kamala" aria-pressed="false">Kamala, 75</button><button class="chip" data-w="lena" aria-pressed="false">Lena, tourist</button></div>
-  <div class="lab" style="margin-top:14px"><div id="jr-body"></div><div><div class="stage" id="jr-map"></div></div></div>
+  <div class="lab" style="margin-top:14px"><div id="jr-body"></div><div class="stick"><div class="stage" id="jr-map"></div></div></div>
 </section>
 
 <section id="v-lab" class="hidden">
@@ -837,7 +837,7 @@ function renderLearn(){
   s.after&&s.after();
   $("wBack").disabled=W.i===0;
   $("wNext").textContent=W.i===WS.length-1?"Now ride Arjun's day →":"Next →";
-  document.querySelector(".wt").classList.toggle("sticky",W.i===3||W.i===4);
+  document.querySelector(".wt").classList.add("sticky");
   if(!HF.on)speak(s.t);
   hfAuto();
 }
